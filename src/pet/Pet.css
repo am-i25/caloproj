@@ -1,0 +1,50 @@
+/* @keyframes move {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(5px);
+    }
+  } */
+  
+  .pet {
+    width: 10vw;
+    height: 25vh;
+    /* border-radius: 50%; */
+    /* animation: move 1s linear infinite alternate; */
+  } 
+  .pet2 {
+    width: 10vw;
+    height: 25vh;
+    /* border-radius: 50%; */
+    /* animation: move 1s linear infinite alternate; */
+  } 
+
+  .pet:hover .fire,
+  .pet:hover .text {
+    display: block !important;
+  }
+
+  .pet:hover .text {
+    transform: skewY(-10deg);
+  }
+  .pet:hover .cat1 {
+    display: none !important;
+  }
+  
+  .pet:hover .cat2 {
+    display: block !important;
+  }
+
+  .cat{
+    background-color: #00c4bd;
+  }
+  .dog{
+    background-color: #ff8260;
+  }
+  .parrot{
+    background-color: #FFBF69;
+  }
+  
+  
+  
