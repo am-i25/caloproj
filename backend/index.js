@@ -5,7 +5,7 @@ const { MongoClient } = require('mongodb');
 const app = express();
 app.use(bodyParser.json());
 
-const uri = 'mongodb+srv://dbUser:x4BjyKpWEoeqXEuF@cluster0.zxq1gte.mongodb.net/?retryWrites=true&w=majority';
+const uri = '';
 const client = new MongoClient(uri);
 
 async function main() {
