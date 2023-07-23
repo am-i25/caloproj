@@ -1,3 +1,9 @@
 .contain {
     background-color: #8338EC;
+    
+}
+.landing{ 
+    background-image: url('../pet/img/background.jpeg');
+    background-repeat: no-repeat;
+    background-position: 100vw;
 }

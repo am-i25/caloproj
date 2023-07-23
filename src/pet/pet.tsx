@@ -1,44 +1,35 @@
-import React from 'react';
-import './Pet.css';
-import './img/dog2.jpeg';
-import cat from './img/cat1.png';
-import cat2 from './img/cat2.png';
-import fire from './img/fire.gif';
-import dog from './img/dog.png'
-import bird from './img/bird.png'
+import React from "react";
+import "./Pet.css";
+import "./img/dog2.jpeg";
+import cat from "./img/cat1.png";
+import cat2 from "./img/cat2.png";
+import fire from "./img/fire.gif";
+import dog from "./img/dog.png";
+import bird from "./img/bird.png";
 
 function Coo() {
   return (
-      <div className="cat rounded-lg border-4 shadow-sm m-4">
-        <div className="pet relative ">
-          <img src={fire} className="fire absolute w-64 h-64 -top-8 left-0 hidden rounded-b-md" alt="" />
-          <img src={cat} className="cat absolute w-40 h-60 -top-8" alt="" />
-          <img src={cat2} className="cat2 absolute w-40 h-60 -top-8 hidden" alt="" />
-          <span className="text text-4xl font-extrabold absolute -top-36 left-20 hidden">F@$KING ADOPT ME !!!</span>
+    <div className="flex flex-col p-10">
+        <img src={cat} className="w-40 h-60" alt="" />
+          <span className="text-center font-bold">jinny</span>
         </div>
-      </div>
   );
 }
 function Coo2() {
   return (
-      <div className="dog rounded-lg border-4 shadow-sm m-4">
-        <div className="pet2 relative ">
-          <img src={dog} className="cat2 absolute w-40 h-60 -top-8 " alt="" />
-          <span className="text text-4xl font-extrabold absolute top-0 left-44 hidden">F@$KING ADOPT ME !!!</span>
+    <div className="flex flex-col p-10">
+        <img src={dog} className="w-40 h-60" alt="" />
+          <span className="text-center font-bold ">Murphy</span>
         </div>
-      </div>
   );
 }
-  function Coo3() {
-    return (
-        <div className="parrot rounded-lg border-4 shadow-sm m-4">
-          <div className="pet2 relative ">
-            <img src={bird} className="cat2 absolute w-40 h-60 -top-8 " alt="" />
-            <span className="text text-4xl font-extrabold absolute top-0 left-44 hidden">F@$KING ADOPT ME !!!</span>
-          </div>
+function Coo3() {
+  return (
+    <div className="flex flex-col p-10">
+        <img src={bird} className="w-40 h-52 mt-6" alt="" />
+          <span className="text-center font-bold">Sparrow</span>
         </div>
-    );
-  }
+  );
+}
 export default Coo;
-export {Coo2, Coo3};
-
+export { Coo2, Coo3 };
