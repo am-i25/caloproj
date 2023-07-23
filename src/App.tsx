@@ -44,6 +44,7 @@ const data = [
   },
   {
     name: "Luna",
+    
     type: "Cat",
     img: "Cat",
     description: "Calm and graceful lorem ipsum dolor sit amet consectetur a",

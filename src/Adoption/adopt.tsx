@@ -19,7 +19,59 @@ interface data {
   img: string;
   description: string;
   age: number;
+  points?:number;
+  size?: number;
+  activityLevel?: string;
+  goodWithKids?: boolean;
+  goodWithOtherPets?: boolean;
+
 }
+interface dataAgainst {
+  type: string;
+  age: number;
+  size?: number;
+  activityLevel?: string;
+  goodWithKids?: boolean;
+  goodWithOtherPets?: boolean;
+}
+
+function quizAlgorithm(data: data[], dataAgainst: dataAgainst[]): data[] {
+  let favoredPet = [];
+  for (let i = 0; i < data.length; i++) {
+    let points = 0;
+    for (let j = 0; j < dataAgainst.length; j++) {
+      if (data[i].type === dataAgainst[j].type) {
+        points += 3;
+      }
+      if (data[i].age <= dataAgainst[j].age) {
+        points += 2;
+      }
+      if (data[i].size === dataAgainst[j].size) {
+        points += 1;
+      }
+      if (data[i].activityLevel === dataAgainst[j].activityLevel) {
+        points += 2;
+      } else if (
+        (data[i].activityLevel === 'High' && dataAgainst[j].activityLevel === 'Medium') ||
+        (data[i].activityLevel === 'Medium' && dataAgainst[j].activityLevel === 'Low')
+      ) {
+        points += 1;
+      }
+      if (data[i].goodWithKids === dataAgainst[j].goodWithKids) {
+        points += 2;
+      }
+      if (data[i].goodWithOtherPets === dataAgainst[j].goodWithOtherPets) {
+        points += 1;
+      }
+    }
+    data[i].points = points;
+    favoredPet.push(data[i]);
+  }
+  return favoredPet;
+}
+
+
+
 
 
 
@@ -49,17 +101,17 @@ function Adoption({ onBackClick, onChooseClick, onFilterChange, selectedFilter, 
       </div>
  
       {selectedFilter === 'Dog' && (
-  <div className="grid grid-cols-4 grid-rows-3 md:grid-cols-3 sm:grid-cols-2 grid-rows-5 gap-x-1 gap-y-1">
+  <div className="grid ml-10 grid-cols-5 grid-rows-3 max-w-6xl items-center mx-auto md:grid-cols-4 sm:grid-cols-2 grid-rows-5">
     {Dogs}
   </div>
 )}
 {selectedFilter === 'Cat' && (
-  <div className="grid grid-cols-4 grid-rows-3 md:grid-cols-3 sm:grid-cols-2 grid-rows-5 gap-x-1 gap-y-1">
+  <div className="grid ml-10 grid-cols-5 grid-rows-3 max-w-6xl items-center mx-auto md:grid-cols-4 sm:grid-cols-2 grid-rows-5">
     {Cats}
   </div>
 )}
 {selectedFilter === 'All' && (
-  <div className="grid grid-cols-4 grid-rows-3 md:grid-cols-3 sm:grid-cols-2 grid-rows-5 gap-x-1 gap-y-1">
+  <div className="grid ml-10 grid-cols-5 grid-rows-3 max-w-6xl items-center mx-auto md:grid-cols-4 sm:grid-cols-2 grid-rows-5">
     {All}
   </div>
 )}
