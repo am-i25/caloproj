@@ -4,16 +4,18 @@ import "../App.tsx"
 import dog from "../pet/img/dog.png";
 import cat from "../pet/img/OIG.If6f93vLFEK_YAn.jpeg";
 import PetCard from "../Card/petCard";
-import { adopted } from '../App.tsx';
+// import { adopted } from '../App.tsx';
+
 
 interface AdoptionProps {
   onBackClick: () => void;
-  onChooseClick: (pet: adopted) => void;
+  onChooseClick: (pet: data) => void;
   onFilterChange: (choice: string) => void;
   selectedFilter: string;
   pets: data[];
 }
-interface data {
+export interface data {
+  id: string; 
   name: string;
   type: string;
   img: string;
@@ -24,8 +26,8 @@ interface data {
   activityLevel?: string;
   goodWithKids?: boolean;
   goodWithOtherPets?: boolean;
-
 }
+
 interface dataAgainst {
   type: string;
   age: number;
@@ -47,7 +49,7 @@ function quizAlgorithm(data: data[], dataAgainst: dataAgainst[]): data[] {
         points += 2;
       }
       if (data[i].size === dataAgainst[j].size) {
-        points += 1;
+        points += 1;  
       }
       if (data[i].activityLevel === dataAgainst[j].activityLevel) {
         points += 2;
@@ -76,8 +78,8 @@ function quizAlgorithm(data: data[], dataAgainst: dataAgainst[]): data[] {
 
 
 function Adoption({ onBackClick, onChooseClick, onFilterChange, selectedFilter, pets }: AdoptionProps) {
-  const Dogs = pets.filter((pet) => pet.type === "Dog").map((pet) => <PetCard name={pet.name} description={pet.description} img={dog} type={pet.type} age={pet.age} onChooseClick={onChooseClick}/>);
-  const Cats = pets.filter((pet) => pet.type === "Cat").map((pet) => <PetCard name={pet.name} description={pet.description} img={cat} type={pet.type} age={pet.age} onChooseClick={onChooseClick}/>);
+  const Dogs = pets.filter((pet) => pet.type === "Dog").map((pet) => <PetCard petData={pet} onChooseClick={onChooseClick}/>);
+  const Cats = pets.filter((pet) => pet.type === "Cat").map((pet) => <PetCard petData={pet} onChooseClick={onChooseClick}/>);
   const All = [Dogs, Cats];
   return (
     <div className="adoption-page min-h-screen min-w-screen  bg-yellow-400 p-8 rounded-md">
@@ -120,3 +122,4 @@ function Adoption({ onBackClick, onChooseClick, onFilterChange, selectedFilter, 
 }
 
 export default Adoption;
+

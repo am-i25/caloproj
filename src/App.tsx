@@ -5,9 +5,11 @@ import Coo from './pet/pet.tsx';
 import Adoption from './Adoption/adopt.tsx';
 import Customize from './Customize/Customize.tsx'
 import Welcome from './welcome/Welcome.tsx';
+import { data } from './Adoption/adopt.tsx';
 
-const data = [
+const petData = [
   {
+    id: "1",
     name: "Buddy",
     type: "Dog",
     img: "dog",
@@ -15,6 +17,7 @@ const data = [
     age: 3
   },
   {
+    id: "2",
     name: "Whiskers",
     type: "Cat",
     img: "dog",
@@ -22,6 +25,7 @@ const data = [
     age: 2
   },
   {
+    id: "3",
     name: "Max",
     type: "Dog",
     img: "dog",
@@ -29,6 +33,7 @@ const data = [
     age: 4
   },
   {
+    id: "4",
     name: "Simba",
     type: "Cat",
     img: "cat",
@@ -36,6 +41,7 @@ const data = [
     age: 1
   },
   {
+    id: "5",
     name: "Bella",
     type: "Dog",
     img: "Cat",
@@ -43,6 +49,7 @@ const data = [
     age: 5
   },
   {
+    id: "6",
     name: "Luna",
     
     type: "Cat",
@@ -51,17 +58,17 @@ const data = [
     age: 3
   }
 ];
-interface adopted {
-  name: string;
-  type: string;
-  img: string;
-  description: string;
-  age: number;
-}
+
+window.addEventListener('load', async () => {
+  const response = await fetch('/pets');
+  const pets = await response.json();
+  console.log(pets);
+});
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState<string>('welcome');
-  const [selectedPet, setSelectedPet] = useState<adopted | null>(null)
+  const [selectedPet, setSelectedPet] = useState<data | null>(null)
   const [selectedFilter, setSelectedFilter] = useState<string>('');
 
   const handleAdoptClick = () => {
@@ -79,7 +86,7 @@ function App() {
 }
  
 // pet selection section ------------------------------------
-  const handlePetSelection = (pet: adopted) => {
+  const handlePetSelection = (pet: data) => {
     setSelectedPet(pet)
     handleChooseClick()
 
@@ -98,7 +105,7 @@ const handleFilterChange = (choice: string) => {
         
       )}
       {currentPage === 'adoption' && (
-        <Adoption pets={data} onBackClick={handleBackClick} onChooseClick={handlePetSelection} onFilterChange={handleFilterChange} selectedFilter={selectedFilter}/>
+        <Adoption pets={petData} onBackClick={handleBackClick} onChooseClick={handlePetSelection} onFilterChange={handleFilterChange} selectedFilter={selectedFilter}/>
 
       )} 
        {currentPage === 'customize' &&  (    
@@ -112,4 +119,3 @@ const handleFilterChange = (choice: string) => {
 
 
 export default App;
-export { adopted };

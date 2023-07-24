@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./custom.css";
-import { adopted } from "../App.tsx";
+import { data } from "../Adoption/adopt.tsx";
 import bed from "../pet/img/additions/bed.png";
 import food from "../pet/img/additions/food.png";
 import leash from "../pet/img/additions/collar.png";
 
 interface CustomizeProps {
   onBackClick: () => void;
-  selectedPet: adopted | null;
+  selectedPet: data | null;
 }
 
 interface Addition {
@@ -77,11 +77,7 @@ function Customize({ onBackClick, selectedPet }: CustomizeProps) {
 
   }
 
-  window.addEventListener('load', async () => {
-    const response = await fetch('/pets');
-    const pets = await response.json();
-    console.log(pets);
-  });
+ 
   
   return (
     <div className="custom min-h-screen min-w-screen p-8 ">

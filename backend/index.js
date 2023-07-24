@@ -7,7 +7,7 @@ const cors = require('cors');
 app.use(bodyParser.json());
 app.use(cors());
 
-const uri = 'mongodb+srv://@cluster0.o8u1gcp.mongodb.net/?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://dkawjdkwadaijdawi:KMr9hDpKMbMXPjjI@cluster0.o8u1gcp.mongodb.net/?retryWrites=true&w=majority';
 const client = new MongoClient(uri);
 
 async function main() {
@@ -20,11 +20,6 @@ async function main() {
     res.json(pets);
   });
 
-  // app.post('/pets', async (req, res) => {
-  //   const newPet = req.body;
-  //   await collection.insertOne(newPet);
-  //   res.status(201).json(newPet);
-  // });
 
   const port = process.env.PORT || 3001;
   app.listen(port, () => {
