@@ -7,7 +7,7 @@ const cors = require('cors');
 app.use(bodyParser.json());
 app.use(cors());
 
-const uri = 'mongodb+srv://dkawjdkwadaijdawi:KMr9hDpKMbMXPjjI@cluster0.o8u1gcp.mongodb.net/?retryWrites=true&w=majority';
+const uri = '@cluster0.o8u1gcp.mongodb.net/?retryWrites=true&w=majority';
 const client = new MongoClient(uri);
 
 async function main() {
