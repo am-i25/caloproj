@@ -1,29 +1,23 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const { MongoClient } = require('mongodb');
+const cors = require('cors');
+const { connect } = require('./db');
 
 const app = express();
-const cors = require('cors');
 app.use(bodyParser.json());
 app.use(cors());
 
-const uri = '@cluster0.o8u1gcp.mongodb.net/?retryWrites=true&w=majority';
-const client = new MongoClient(uri);
-
 async function main() {
-  await client.connect();
-  const db = client.db('test');
-  const collection = db.collection('pets');
+  await connect();
+  
 
- app.get('/pets', async (req, res) => {
-    const pets = await collection.find().toArray();
-    res.json(pets);
-  });
-
-
-  const port = process.env.PORT || 3001;
+  const port = process.env.PORT;
   app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
   });
 }
 
 main();
+
+

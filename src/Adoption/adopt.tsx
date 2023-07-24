@@ -14,19 +14,6 @@ interface AdoptionProps {
   selectedFilter: string;
   pets: data[];
 }
-export interface data {
-  id: string; 
-  name: string;
-  type: string;
-  img: string;
-  description: string;
-  age: number;
-  points?:number;
-  size?: number;
-  activityLevel?: string;
-  goodWithKids?: boolean;
-  goodWithOtherPets?: boolean;
-}
 
 interface dataAgainst {
   type: string;
