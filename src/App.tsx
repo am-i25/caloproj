@@ -36,10 +36,11 @@ function App() {
       .then((res) => res.json() as Promise<PetsResponse>)
       .then((data) => {
         if (isMounted) setPets(data);
-        console.log(data);
       });
+      
     return () => { isMounted = false };
   }, []);
+  console.log(pets)
   
   const handleAdoptClick = () => {
     setCurrentPage('adoption');
