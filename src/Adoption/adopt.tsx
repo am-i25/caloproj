@@ -9,12 +9,12 @@ import PetCard from "../Card/petCard";
 
 interface AdoptionProps {
   onBackClick: () => void;
-  onChooseClick: (pet: data) => void;
+  onChooseClick: (pet: pets) => void;
   onFilterChange: (choice: string) => void;
   selectedFilter: string;
-  pets: data[];
+  pets: pets[];
+  dataAgainst: dataAgainst[]; // Add a new prop for the dataAgainst array
 }
-
 interface dataAgainst {
   type: string;
   age: number;
@@ -24,7 +24,7 @@ interface dataAgainst {
   goodWithOtherPets?: boolean;
 }
 
-function quizAlgorithm(data: data[], dataAgainst: dataAgainst[]): data[] {
+function quizAlgorithm(data: pets[], dataAgainst: dataAgainst[]): data[] {
   let favoredPet = [];
   for (let i = 0; i < data.length; i++) {
     let points = 0;

@@ -27,19 +27,20 @@ function App() {
   const [currentPage, setCurrentPage] = useState<string>('welcome');
   const [selectedPet, setSelectedPet] = useState<data | null>(null)
   const [selectedFilter, setSelectedFilter] = useState<string>('');
-  const [pets, setPets] = useState([]);
+  const [pets, setPets] = useState<PetsResponse>([]);
 
 
-    useEffect(() => {
-      let isMounted = true;
-      fetch('/pets')
+  useEffect(() => {
+    let isMounted = true;
+    fetch('http://localhost:3001/pets')
       .then((res) => res.json() as Promise<PetsResponse>)
-        .then((data) => {
-          if (isMounted) setPets(data);
-        });
-      return () => { isMounted = false };
-    }, []);
-
+      .then((data) => {
+        if (isMounted) setPets(data);
+        console.log(data);
+      });
+    return () => { isMounted = false };
+  }, []);
+  
   const handleAdoptClick = () => {
     setCurrentPage('adoption');
   };
@@ -74,7 +75,7 @@ const handleFilterChange = (choice: string) => {
         
       )}
       {currentPage === 'adoption' && (
-        <Adoption pets={pets} onBackClick={handleBackClick} onChooseClick={handlePetSelection} onFilterChange={handleFilterChange} selectedFilter={selectedFilter}/>
+        <Adoption pets={pets} onBackClick={handleBackClick} onChooseClick={handlePetSelection} onFilterChange={handleFilterChange} selectedFilter={selectedFilter} dataAgainst={pets}/>
 
       )} 
        {currentPage === 'customize' &&  (    
